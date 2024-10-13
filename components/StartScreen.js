@@ -1,5 +1,7 @@
 import React from 'react';
 import {SafeAreaView ,Text , Button, View, StyleSheet} from 'react-native';
+
+
 function StartScreen({navigation}) {
     return (
         <SafeAreaView style={styles.container}>
