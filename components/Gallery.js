@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import { Text, SafeAreaView, View, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import * as ImagePicker from "expo-image-picker"; 
 
+import { ResizeMode } from 'expo-av'
+import VideoPlayer from 'expo-video-player'
+
 function Gallery(props) {
     const [error, setError] = useState(null);
+    const [file, setFile] = useState(null);
 
     const pickFromGallery = async () => { 
         const { status } = await ImagePicker. 
@@ -26,7 +30,8 @@ function Gallery(props) {
                 
                 if(result.assets != null)
                 {
-                    console.log(result.assets[0].uri);
+                    console.log(result.assets[0]);
+                    setFile(result.assets[0].uri);
                 }
                 
                 
@@ -38,6 +43,24 @@ function Gallery(props) {
 
     return (
         <SafeAreaView style={styles.container}>
+{file ? (
+        <View style={styles.videoView}>
+        <VideoPlayer
+        style={{width:480, height:270}}
+  videoProps={{
+    shouldPlay: true,
+    resizeMode: ResizeMode.CONTAIN,
+    // ❗ source is required https://docs.expo.io/versions/latest/sdk/video/#props
+    source: {
+      uri: file,
+    },
+    
+  }}
+  
+/>
+        </View>) : <></>}
+
+
             <View style={styles.view}>
                 
                 <TouchableOpacity style={styles.button}
@@ -63,6 +86,21 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end', // Dikeyde en alta yerleştirir
         alignItems: 'flex-end', // Yatayda en sağa yerleştirir
         padding: 16, // Butonun kenarlara mesafesi
+      },
+      videoView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '##FFD700'
+        
+      },
+      video: {
+        width: '100%',
+        height: 300,  // Video boyutu
+      },
+      videoPlayer: {
+        width: '100%', // Ekran genişliği kadar yap
+        height: 300, // Sabit bir yükseklik ayarla
       },
       button: {
         width: 60, // Butonun genişliği
