@@ -82,10 +82,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 16,
       },
       view: {
-        flex: 1, // Ekranı kaplamak için
-        justifyContent: 'flex-end', // Dikeyde en alta yerleştirir
-        alignItems: 'flex-end', // Yatayda en sağa yerleştirir
-        padding: 16, // Butonun kenarlara mesafesi
+        flex: 1, 
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        padding: 16, 
       },
       videoView: {
         flex: 1,
@@ -103,21 +103,21 @@ const styles = StyleSheet.create({
         height: 300, // Sabit bir yükseklik ayarla
       },
       button: {
-        width: 60, // Butonun genişliği
-        height: 60, // Butonun yüksekliği
-        borderRadius: 30, // Yuvarlak yapmak için yarıçap
-        backgroundColor: '#007AFF', // Butonun arka plan rengi
-        justifyContent: 'center', // "+" işaretini dikeyde ortalamak için
-        alignItems: 'center', // "+" işaretini yatayda ortalamak için
-        shadowColor: '#000', // Gölge rengi
-        shadowOffset: { width: 0, height: 2 }, // Gölge ofseti
-        shadowOpacity: 0.3, // Gölge opaklığı
-        shadowRadius: 4, // Gölge yayılma yarıçapı
-        elevation: 5, // Android'de gölge için
+        width: 60, 
+        height: 60, 
+        borderRadius: 30, 
+        backgroundColor: '#007AFF', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 }, 
+        shadowOpacity: 0.3, 
+        shadowRadius: 4, 
+        elevation: 5, 
       },
       plusText: {
-        fontSize: 30, // "+" işaretinin boyutu
-        color: '#fff', // "+" işaretinin rengi
+        fontSize: 30, 
+        color: '#fff', 
       },
   });
 
