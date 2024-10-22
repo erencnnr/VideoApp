@@ -10,6 +10,10 @@ function Gallery(props) {
     const [error, setError] = useState(null);
     const [file, setFile] = useState(null);
 
+    func = () => {
+        console.log("fs");
+    }
+
     const pickFromGallery = async () => { 
         const { status } = await ImagePicker. 
             requestMediaLibraryPermissionsAsync(); 
@@ -43,22 +47,29 @@ function Gallery(props) {
 
     return (
         <SafeAreaView style={styles.container}>
-{file ? (
+
+    {file ? (
         <View style={styles.videoView}>
-        <VideoPlayer
-        style={{width:480, height:270}}
-  videoProps={{
-    shouldPlay: true,
-    resizeMode: ResizeMode.CONTAIN,
-    // ❗ source is required https://docs.expo.io/versions/latest/sdk/video/#props
-    source: {
-      uri: file,
-    },
-    
-  }}
-  
-/>
-        </View>) : <></>}
+          <VideoPlayer
+              style={styles.videoPlayer}
+              videoProps={{
+              shouldPlay: true,
+              resizeMode: ResizeMode.CONTAIN,
+              source: {
+                      uri: file,
+                      },
+                
+              }}
+              fullscreen={{enterFullscreen:func,
+                exitFullscreen:func,
+                inFullscreen:true,
+                visible:true
+                                    }}
+              
+            />
+        </View>) : 
+            <></>
+      }
 
 
             <View style={styles.view}>
@@ -80,27 +91,27 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         marginHorizontal: 16,
+        backgroundColor: '#ecf0f1'
       },
       view: {
         flex: 1, 
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        padding: 16, 
+        padding: 16,
+        backgroundColor: '#ecf0f1' 
       },
       videoView: {
         flex: 1,
+        paddingTop:200,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '##FFD700'
+        backgroundColor: '#ecf0f1'
         
       },
-      video: {
-        width: '100%',
-        height: 300,  // Video boyutu
-      },
       videoPlayer: {
-        width: '100%', // Ekran genişliği kadar yap
-        height: 300, // Sabit bir yükseklik ayarla
+        width: 420, 
+        height: 300,
+        
       },
       button: {
         width: 60, 
